@@ -1,0 +1,16 @@
+Example.RefinitivAPIs.R.Jupyter-master/
+
+python/.ipynb_checkpoints
+python/.env
+python/rdp_apis_notebook.ipynb
+python/.dockerignore
+
+r/notebook/.ipynb_checkpoints
+r/notebook/.cache
+r/notebook/.local
+r/notebook/RDPHistoricalRExample.ipynb
+r/.env
+r/Dockerfile
+r/.dockerignore
+
+RUN.md
