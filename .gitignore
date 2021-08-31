@@ -1,16 +1,25 @@
 Example.RefinitivAPIs.R.Jupyter-master/
 
-python/.ipynb_checkpoints
+python/notebook/.ipynb_checkpoints
+python/notebook/.cache
+python/notebook/.config
+python/notebook/.ipython
+python/notebook/.jupyter
+python/notebook/.local
+python/notebook/.env
+python/notebook/jupyterlab_plotly_dapi.ipynb
+python/notebook/rdp_xlwingsce_notebook.ipynb
 python/.env
-python/rdp_apis_notebook.ipynb
-python/.dockerignore
 
 r/notebook/.ipynb_checkpoints
 r/notebook/.cache
 r/notebook/.local
 r/notebook/RDPHistoricalRExample.ipynb
 r/.env
+r/notebook/.env
 r/Dockerfile
 r/.dockerignore
 
 RUN.md
+dev/
+note.txt

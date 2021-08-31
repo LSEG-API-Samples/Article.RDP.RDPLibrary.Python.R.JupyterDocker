@@ -1,0 +1,2 @@
+plotly==5.2.2
+refinitiv-dataplatform==1.0.0a10
