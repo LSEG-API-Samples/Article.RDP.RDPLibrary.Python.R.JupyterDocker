@@ -8,5 +8,3 @@ notebook/.ipython/
 notebook/.jupyter/
 notebook/.local/
 notebook/.env
-notebook/jupyterlab_plotly_dapi.ipynb
-notebook/rdp_xlwingsce_notebook.ipynb

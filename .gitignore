@@ -7,18 +7,13 @@ python/notebook/.ipython
 python/notebook/.jupyter
 python/notebook/.local
 python/notebook/.env
-python/notebook/jupyterlab_plotly_dapi.ipynb
-python/notebook/rdp_xlwingsce_notebook.ipynb
 python/.env
 
 r/notebook/.ipynb_checkpoints
 r/notebook/.cache
 r/notebook/.local
-r/notebook/RDPHistoricalRExample.ipynb
-r/notebook/rdp_apis_example_r.ipynb
-r/notebook/rdp_apis_notebook.ipynb
-r/notebook/rdp_library_plotly_example.ipynb
 r/notebook/.env
+r/notebook/.jupyter
 r/.env
 
 
