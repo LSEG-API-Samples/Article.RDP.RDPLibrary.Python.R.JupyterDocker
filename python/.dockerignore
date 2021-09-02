@@ -1,5 +1,6 @@
 .env
 .env.example
+notebook/
 notebook/.ipynb_checkpoints/
 notebook/.cache/
 notebook/.config/

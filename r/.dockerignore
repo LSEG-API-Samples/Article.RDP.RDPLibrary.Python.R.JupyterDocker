@@ -1,0 +1,10 @@
+.env
+.env.example
+notebook/
+notebook/.ipynb_checkpoints/
+notebook/.cache/
+notebook/.config/
+notebook/.ipython/
+notebook/.jupyter/
+notebook/.local/
+notebook/.env

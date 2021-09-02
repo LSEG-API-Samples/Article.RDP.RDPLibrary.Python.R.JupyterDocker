@@ -15,11 +15,15 @@ r/notebook/.ipynb_checkpoints
 r/notebook/.cache
 r/notebook/.local
 r/notebook/RDPHistoricalRExample.ipynb
-r/.env
+r/notebook/rdp_apis_example_r.ipynb
+r/notebook/rdp_apis_notebook.ipynb
+r/notebook/rdp_library_plotly_example.ipynb
 r/notebook/.env
-r/Dockerfile
-r/.dockerignore
+r/.env
+
 
 RUN.md
 dev/
 note.txt
+.env
+images/tmp/
