@@ -26,7 +26,7 @@ The [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/late
 Docker also help the team share development environment by letting your peers replicate the same environment easily. You can share the notebooks, Dockerfile, dependencies-list files to your colleagues, then they just run one or two commands to run the same environment.
 
 Jupyter Docker Stacks provide various images for developers based on their requirement such as:
-- [jupyter/scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook): Jupyter Notebook/JupyterLab with [conda](https://github.com/conda/conda)/[mamba](https://github.com/mamba-org/mamba) , [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) and popular packages from the scientific Python ecosystem (Pands, Matplotlib, [Seaborn](https://seaborn.pydata.org/), etc.)
+- [jupyter/scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook): Jupyter Notebook/JupyterLab with [conda](https://github.com/conda/conda)/[mamba](https://github.com/mamba-org/mamba) , [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) and popular packages from the scientific Python ecosystem ([Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Requests](https://docs.python-requests.org/en/master/), etc.)
 - [jupyter/r-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-r-notebook): Jupyter Notebook/JupyterLab wit R interpreter, IRKernel and [devtools](https://cran.r-project.org/web/packages/devtools/index.html).
 - [jupyter/datascience-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook): Everything in *jupyter/scipy-notebook* and *jupyter/r-notebook* images with Julia support.
 - [jupyter/tensorflow-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-tensorflow-notebook): Everything in *jupyter/scipy-notebook* image with [TensorFlow](https://www.tensorflow.org/).
@@ -48,7 +48,7 @@ The above command set the following container's options:
 
 *Note*:
 - Docker destroys the container after notebook server exit, so you always need the ```-v``` option.
-- The default's username of a container is always **jovyan** (but you can change it to something else).
+- The default's notebook username of a container is always **jovyan** (but you can change it to something else).
 
 The running result with the notebook server URL information is the following.
 
@@ -386,6 +386,11 @@ The first step is to unzip or download the example project folder into a directo
 
 ## Conclusion
 
+The jupyter/r-notebook image provides Jupyter Server with a handful of libraries for Data Science/Financial development works with the R programming language. However, if developers need additional libraries, Jupyter Docker Stacks let developers create their Dockerfile with an instruction to install the other R dependencies. All containers generated from the customized image can use the libraries without any manual installation.
+
+The jupyter/scipy-notebook image provides Jupyter Server with a handful of libraries that is enough for building a financial, data science notebook application. You do not need to set up Anaconda, a virtual environment, and install all dependencies manually anymore.
+
+The jupyter/scipy-notebook image provides Jupyter Server with a handful of libraries for Data Science/Financial development works. However, if developers need additional libraries, Jupyter Docker Stacks let developers create their Dockerfile with an instruction to install the Python dependencies via mamba, pip, and conda package management tools. All containers generated from the customized image can use the libraries without any manual installation. 
 
 ## <a id="references"></a>References
 
@@ -402,6 +407,7 @@ You can find more details regarding the Refinitiv Data Platform Libraries, Plotl
 * [Jupyter Dokcer Stacks page](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
 * [Jupyter Dokcer Stack on DockerHub](https://hub.docker.com/u/jupyter) website.
 * [Setup Jupyter Notebook for R article](https://developers.refinitiv.com/en/article-catalog/article/setup-jupyter-notebook-r).
+* [An Introduction to Docker for R Users](https://colinfay.me/docker-r-reproducibility/).
 
 For any questions related to Refinitiv Data Platform or Refinitiv Data Platform Libraries, please use the following forums on the [the Developers Community Q&A page](https://community.developers.refinitiv.com/).
 - [RDP APIs Forum](https://community.developers.refinitiv.com/spaces/231/index.html).
