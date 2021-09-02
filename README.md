@@ -1,4 +1,4 @@
-# How to set up and run Data Science Development Environment with Jupyter and Docker
+# How to set up and run Data Science Development Environment with Jupyter on Docker
 - version: 1.0
 - Last update: Sep 2021
 - Environment: Windows
