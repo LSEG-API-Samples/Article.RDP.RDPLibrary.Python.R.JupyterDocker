@@ -279,7 +279,7 @@ Once the Docker image is built successfully, you can the following command to st
 docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work -e  --env-file .env jupyter_rdp_r_plotly
 ```
 Then you can start to create notebook applications with R language to consume Refinitiv content via the RDP APIs HTTP REST, and then plot data with the Plotly library. Please see more detail in the *rdp_library_plotly_notebook.ipynb* example notebook file in */r/notebook/* folder. 
-this example notebook is based on the *RDPHistoricalRExample.ipynb* example of [Setup Jupyter Notebook for R](https://developers.refinitiv.com/en/article-catalog/article/setup-jupyter-notebook-r) ([GitHub](https://github.com/Refinitiv-API-Samples/Example.RefinitivAPIs.R.Jupyter)) with some modifications to match the Juypter Docker scenario.
+this example notebook is based on the *RDPHistoricalRExample.ipynb* example of [Setup Jupyter Notebook for R](https://developers.refinitiv.com/en/article-catalog/article/setup-jupyter-notebook-r) ([GitHub](https://github.com/Refinitiv-API-Samples/Example.RefinitivAPIs.R.Jupyter)) with some modifications to match the Jupyter Docker scenario.
 
 ![Figure-12](images/12_rdpapi_r_notebook_1.png "RDP APIs and Plotly r-notebook result 1") 
 
