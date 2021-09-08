@@ -4,7 +4,7 @@
 - Environment: Windows
 - Prerequisite: [Access to RDP credentials](#prerequisite)
 
-## <a id="table"></a>Table of Content
+## <a id="table"></a>Table of Contents
 * [Introduction](#intro_0)
 * [Introduction to Jupyter Docker Stacks](#intro)
 * [Running the Jupyter Docker Scipy-Notebook Image](#scipy_notebook)
