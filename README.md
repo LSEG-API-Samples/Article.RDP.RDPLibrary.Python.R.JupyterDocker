@@ -1,5 +1,5 @@
 # How to set up and run Data Science Development Environment with Jupyter on Docker
-- version: 1.0
+- version: 1.1
 - Last update: Sep 2021
 - Environment: Windows
 - Prerequisite: [Access to RDP credentials](#prerequisite)
