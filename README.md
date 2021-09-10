@@ -430,7 +430,7 @@ The first step is to unzip or download the example project folder into a directo
     RDP_AUTH_URL=/auth/oauth2/v1/token
     RDP_ESG_URL=/data/environmental-social-governance/v2/views/scores-full
     ```
-3. Run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt to pull Jupyter Docker Scipy-Notebook image and run its container
+3. Run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt to pull Jupyter Docker R-Notebook image and run its container
     ```
     docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/r-notebook:70178b8e48d7
     ```
