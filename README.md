@@ -60,7 +60,7 @@ Please see more detail about all image types on [Selecting an Image](https://jup
 You can run the following command to pull a jupyter/scipy-notebook image (tag *70178b8e48d7*) and starts a container running a Jupyter Notebook server in your machine.
 
 ```
-docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -it jupyter/scipy-notebook:70178b8e48d7
+docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/scipy-notebook:70178b8e48d7
 ```
 The above command set the following container's options:
 - ```-p 8888:8888```: Exposes the server on host port 8888
@@ -68,6 +68,7 @@ The above command set the following container's options:
 - ```-e JUPYTER_ENABLE_LAB=yes```: Run JupyterLab instead of the default classic Jupyter Notebook.
 - ```--name notebook```: Define a container name as *notebook*
 - ```-it```: enable interactive mode with a pseudo-TTY when running a container
+- ```--env-file .env```: Pass a ```.env``` file to a container.
 
 *Note*:
 - Docker destroys the container and its data when you remove the container, so you always need the ```-v``` option.
@@ -245,7 +246,7 @@ Then you can start to create notebook applications that consume content from Ref
 If you are using [R programming language](https://www.r-project.org/) in your Data Science or Finance/Statistic works, Jupyter Docker Stacks provide [jupyter/r-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-r-notebook) Docker image for you. You can pull a jupyter/r-notebook image starts a container running a Jupyter Notebook server with the [R kernel](https://irkernel.github.io/) via a single command.
 
 ```
-docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -it jupyter/r-notebook:70178b8e48d7
+docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/r-notebook:70178b8e48d7
 ```
 The above command set the following container's options:
 - ```-p 8888:8888```: Exposes the server on host port 8888
@@ -253,6 +254,7 @@ The above command set the following container's options:
 - ```-e JUPYTER_ENABLE_LAB=yes```: Run JupyterLab instead of the default classic Jupyter Notebook.
 - ```--name notebook```: Define a container name as *notebook*
 - ```-it```: enable interactive mode with a pseudo-TTY when running a container
+- ```--env-file .env```: Pass a ```.env``` file to a container.
 
 The running result with the notebook server URL information is the following (same as other Jupyter Docker Stacks above).
 
@@ -279,6 +281,9 @@ docker stop notebook
 ...
 docker rm notebook
 ```
+The example notebook of this scenario is the *rdp_apis_r_esg_notebook.ipynb* example notebook file in */r/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to run the Jupyter Docker Scipy-Notebook](#scipy_notebook_run) section.
+
+![Figure-11-b](images/11b_rdpapis_r_notebook.png "RDP APIs R notebook run result") 
 
 With the pre-installed R Data Science and development packages, developers are ready to build a notebook or dashboard with the RDP APIs (or other Refinitiv HTTP REST APIs) content. You can request data from Refinitiv with the HTTP library, perform data analysis and then plot a graph for data visualization.
 
@@ -411,9 +416,33 @@ The first step is to unzip or download the example project folder into a directo
 
     ![Figure-16](images/16_rdplib_notebook_screen.png "rdp_library_plotly_notebook.ipynb screen")
 
+### <a id="r_notebook_run"></a>How to run the Jupyter Docker R-Notebook
+1. Firstly, open the project folder in the command prompt and go to the *r* subfolder
+2. Create a file name ```.env``` in that folder with the following content:
+    ```
+    # RDP Core Credentials
+    RDP_USER=<Your RDP User>
+    RDP_PASSWORD=<Your RDP Password>
+    RDP_APP_KEY=<Your RDP App Key>
+
+    # RDP Core Endpoints
+    RDP_BASE_URL=https://api.refinitiv.com
+    RDP_AUTH_URL=/auth/oauth2/v1/token
+    RDP_ESG_URL=/data/environmental-social-governance/v2/views/scores-full
+    ```
+3. Run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt to pull Jupyter Docker Scipy-Notebook image and run its container
+    ```
+    docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/r-notebook:70178b8e48d7
+    ```
+4. The Jupyter Docker R-Notebook will run the Jupyter server and print the server URL in a console. 
+5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
+6. Open the work folder and open *rdp_apis_r_esg_notebook.ipynb* example notebook file, then run through each notebook cell.
+
+    ![Figure-16b](images/16b_rdpapi_notebook_r_screen.png "rdp_apis_r_esg_notebook.ipynb screen") 
+
 ### <a id="r_notebook_build"></a>How to build and run the Jupyter Docker R-Notebook customized image with Plotly
 1. Firstly, open the project folder in the command prompt and go to the *r* subfolder
-2. Create a file name ```.env``` in that folder with the following content. You can skip this step if you already did it in the Scipy-Notebook run section above.
+2. Create a file name ```.env``` in that folder with the following content.
     ```
     # RDP Core Credentials
     RDP_USER=<Your RDP User>
