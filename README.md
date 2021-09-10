@@ -247,8 +247,18 @@ If you are using [R programming language](https://www.r-project.org/) in your Da
 ```
 docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -it jupyter/r-notebook:70178b8e48d7
 ```
+The above command set the following container's options:
+- ```-p 8888:8888```: Exposes the server on host port 8888
+- ```-v <your working directory>:/home/jovyan/work```: Mounts the working directory on the host as /home/jovyan/work folder in the container to save the files between your host machine and a container.
+- ```-e JUPYTER_ENABLE_LAB=yes```: Run JupyterLab instead of the default classic Jupyter Notebook.
+- ```--name notebook```: Define a container name as *notebook*
+- ```-it```: enable interactive mode with a pseudo-TTY when running a container
 
-The above Docker run command will show the running result with the notebook server URL information (same as other Jupyter Docker Stacks). You can access the JupyterLab application by opening the notebook server URL in your browser. It starts with the */home/jovyan/* location. Please note that only the notebooks and files in the */home/jovyan/* folder can be saved to the host machine (your ```<your working directory>``` folder).
+The running result with the notebook server URL information is the following (same as other Jupyter Docker Stacks above).
+
+![Figure-9-B](images/09_docker_r_run.png "basic docker r run result") 
+
+You can access the JupyterLab application by opening the notebook server URL in your browser. It starts with the */home/jovyan/* location. 
 
 This JupyterLab application comes with both Python and R kernels for the notebook application. 
 
@@ -257,6 +267,18 @@ This JupyterLab application comes with both Python and R kernels for the noteboo
 The jupyter/r-notebook Docker image comes with pre-installed popular R packages for HTTP REST API, JSON, plotting a basic graph, and other operations too.
 
 ![Figure-11](images/11_jupyter_r_2.png "R-Notebook image Jupyter application")
+
+Please note that only the notebooks and files in the */home/jovyan/* folder can be saved to the host machine (your ```<your working directory>``` folder). 
+
+To stop the container, just press Ctrl+c keys to exit the container.
+
+Alternatively, you may just run ```docker stop <container name>``` to stop the container  and ```docker rm <container name>``` command remove the container.
+
+```
+docker stop notebook
+...
+docker rm notebook
+```
 
 With the pre-installed R Data Science and development packages, developers are ready to build a notebook or dashboard with the RDP APIs (or other Refinitiv HTTP REST APIs) content. You can request data from Refinitiv with the HTTP library, perform data analysis and then plot a graph for data visualization.
 
@@ -288,7 +310,7 @@ RUN R -e "install.packages('plotly', repos='http://cran.rstudio.com/')"
 
 ENV JUPYTER_ENABLE_LAB=yes
 ```
-And then build a Docker image name *jupyter_rdp_plotly* with the following command:
+And then build a Docker image name *jupyter_rdp_r_plotly* with the following command:
 
 ```
 docker build . -t jupyter_rdp_r_plotly
