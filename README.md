@@ -281,7 +281,7 @@ docker stop notebook
 ...
 docker rm notebook
 ```
-The example notebook of this scenario is the *rdp_apis_r_esg_notebook.ipynb* example notebook file in */r/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to run the Jupyter Docker Scipy-Notebook](#scipy_notebook_run) section.
+The example notebook of this scenario is the *rdp_apis_r_esg_notebook.ipynb* example notebook file in */r/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to run the Jupyter Docker R-Notebook](#r_notebook_run) section.
 
 ![Figure-11-b](images/11b_rdpapis_r_notebook.png "RDP APIs R notebook run result") 
 
