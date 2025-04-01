@@ -1,6 +1,6 @@
 # How to set up and run Data Science Development Environment with Jupyter on Docker
-- version: 1.1
-- Last update: Sep 2021
+- version: 1.5
+- Last update: April 2025
 - Environment: Windows
 - Prerequisite: [Access to RDP credentials](#prerequisite)
 
@@ -20,9 +20,14 @@
 
 ## <a id="intro_0"></a>Introduction
 
+**Last Updated**: April 2025
+
+**Update April 2025**: This article are outdated. There is a new and improve [LSEG Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) (aka Data Library version 2) available now. Please see the [Essential Guide to the Data Libraries - Generations of Python library (EDAPI, RDP, RD, LD)](https://developers.lseg.com/en/article-catalog/article/essential-guide-to-the-data-libraries) article for more detail.
+
 The Data Scientists and Financial coders need to interact with various Data Science/Financial development tools such as the [Anaconda](https://www.anaconda.com/) (or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)) Python distribution platform, the [Python programming language](https://www.python.org/), the [R programming language](https://www.r-project.org/), [Matplotlib library](https://matplotlib.org/), [Pandas Library](https://pandas.pydata.org/), the [Jupyter](https://jupyter.org/) application, and much more.
 
 One of the hardest parts of being Data Developers is the step to set up those tools. You need to install a lot of software and libraries in the correct order to set up your Data Science development environment. The example steps are the following:
+
 1. Install Python or Anaconda/Miniconda
 2. Create a new virtual environment (It is not recommended to install programs into your base environment)
 3. Install Jupyter
@@ -35,7 +40,7 @@ If you need to share your code/project with your peers, the task to replicate th
 
 The good news is you can reduce the effort to set up the workbench with the [Docker](https://www.docker.com/) containerization platform. You may think Docker is for the DevOps or the hardcore Developers only, but the [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) simplifies how to create a ready-to-use Jupyter application with Data Science/Financial libraries in a few commands. 
 
-This project demonstrates how to set up Jupyter Notebook environment with Docker to consume and display financial data from Refinitiv Data Platform without the need to install the steps above. The project covers both Python and R programming languages. 
+This project demonstrates how to set up Jupyter Notebook environment with Docker to consume and display financial data from Delivery Platform without the need to install the steps above. The project covers both Python and R programming languages. 
 
 ## <a id="intro"></a>Introduction to Jupyter Docker Stacks
 
@@ -100,13 +105,13 @@ docker rm notebook
 
 ### <a id="rdpapis_esg"></a>Requesting ESG Data from RDP APIs 
 
-The jupyter/scipy-notebook image is suitable for building a notebook or dashboard with the Refinitiv Data Platform APIs (RDP APIs) content. You can request data from RDP APIs with the HTTP library, perform data analysis and then plot a graph with built-in Python libraries.
+The jupyter/scipy-notebook image is suitable for building a notebook or dashboard with the Delivery Platform (RDP APIs) content. You can request data from RDP APIs with the HTTP library, perform data analysis and then plot a graph with built-in Python libraries.
 
-#### <a id="whatis_rdp"></a>What is Refinitiv Data Platform (RDP) APIs?
+#### <a id="whatis_rdp"></a>What is Delivery Platform APIs?
 
-The [Refinitiv Data Platform (RDP) APIs](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis) provide various Refinitiv data and content for developers via easy to use Web-based API.
+The [Delivery/Data Platform (RDP) APIs](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis) provide various LSEG data and content for developers via easy to use Web-based API.
 
-RDP APIs give developers seamless and holistic access to all of the Refinitiv content such as Historical Pricing, Environmental Social and Governance (ESG), News, Research, etc and commingled with their content, enriching, integrating, and distributing the data through a single interface, delivered wherever they need it.  The RDP APIs delivery mechanisms are the following:
+RDP APIs give developers seamless and holistic access to all of the LSEG content such as Historical Pricing, Environmental Social and Governance (ESG), News, Research, etc and commingled with their content, enriching, integrating, and distributing the data through a single interface, delivered wherever they need it.  The RDP APIs delivery mechanisms are the following:
 * Request - Response: RESTful web service (HTTP GET, POST, PUT or DELETE) 
 * Alert: delivery is a mechanism to receive asynchronous updates (alerts) to a subscription. 
 * Bulks:  deliver substantial payloads, like the end-of-day pricing data for the whole venue. 
@@ -114,17 +119,17 @@ RDP APIs give developers seamless and holistic access to all of the Refinitiv co
 
 This example project is focusing on the Request-Response: RESTful web service delivery method only.  
 
-For more detail regarding Refinitiv Data Platform, please see the following APIs resources: 
-- [Quick Start](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start) page.
-- [Tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials) page.
-- [RDP APIs: Introduction to the Request-Response API](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials#introduction-to-the-request-response-api) page.
-- [RDP APIs: Authorization - All about tokens](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials#authorization-all-about-tokens) page.
+For more detail regarding the Platform, please see the following APIs resources: 
+- [Quick Start](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/quick-start) page.
+- [Tutorials](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials) page.
+- [RDP APIs: Introduction to the Request-Response API](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials#introduction-to-the-request-response-api) page.
+- [RDP APIs: Authorization - All about tokens](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis/tutorials#authorization-all-about-tokens) page.
 
-The example notebook of this scenario is the *rdp_apis_notebook.ipynb* example notebook file in */python/notebook/* folder. The notebook workflow is identical to the example notebook on [my dotenv repository](https://github.com/Refinitiv-API-Samples/Article.RDP.RRTO.Python.Java.DOTENV).  
+The example notebook of this scenario is the *rdp_apis_notebook.ipynb* example notebook file in */python/notebook/* folder. The notebook workflow is identical to the example notebook on [my dotenv repository](https://https://github.com/LSEG-API-Samples.lseg.com/en/Article.RDP.RRTO.Python.Java.DOTENV).  
 
 To run this *rdp_apis_notebook.ipynb* example notebook, you just create a ```.env``` file in */python/* folder with the RDP credentials and endpoints information, and then run jupyter/scipy-notebook image to start a Jupyter server with the following command in */python/* folder.
 
-```
+```bash
 docker run -p 8888:8888 --name notebook -v <project /python/notebook/ directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/scipy-notebook:70178b8e48d7
 ```
 
@@ -140,13 +145,13 @@ Please see the full detail regarding how to run this example notebook on the [Ho
 
 The Jupyter Docker Stacks images are a Linux container that runs the Jupyter server for you. The default notebook user (```nb_user```) of the Jupyter server is always **jovyan** and the home directory is always **home/jovyan**. However, you can change a notebook user to someone else based on your preference via the following container's options.
 
-```
+```bash
 docker run -e CHOWN_HOME=yes --user root -e NB_USER=<User> <project /python/notebook/ directory>:/<User>/jovyan/work
 ```
 
 Example with *wasinw* user.
 
-```
+```bash
 docker run -p 8888:8888 --name notebook -e CHOWN_HOME=yes --user root -e NB_USER=wasinw -v C:\drive_d\Project\Code\notebook_docker\python\notebook:/home/wasinw/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/scipy-notebook:70178b8e48d7
 ```
 Now the notebook user is *wasinw* and the working directory is */home/wasinw/work* folder.
@@ -157,16 +162,22 @@ Please note that this example project uses *jovyan* as a default notebook user.
 
 ## <a id="scipy_install_libs"></a>How to use other Python Libraries
 
+**Last Updated**: April 2025
+
+**Update April 2025**: This article are outdated. There is a new and improve [LSEG Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) (aka Data Library version 2) available now. Please see the [Essential Guide to the Data Libraries - Generations of Python library (EDAPI, RDP, RD, LD)](https://developers.lseg.com/en/article-catalog/article/essential-guide-to-the-data-libraries) article for more detail.
+
 If you are using the libraries that do not come with the jupyter/scipy-notebook Docker image such as the [Plotly Python library ](https://plotly.com/python/), you can install them directly via the notebook shell with both pip and conda/mamba tools.
 
 Example with pip:
-```
+
+```python
 import sys
 
 !$sys.executable -m pip install plotly
 ```
 Example with conda:
-```
+
+```python
 import sys
 
 !conda install --yes --prefix {sys.prefix} plotly
@@ -175,18 +186,14 @@ However, this solution installs the package into the currently-running Jupyter k
 
 The Jupyter Docker Stacks let developers create their Dockerfile with an instruction to install the Python dependencies via mamba, pip, and conda package management tools. Please see more detail on the [Using mamba install or pip install in a Child Docker image](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html#using-mamba-install-or-pip-install-in-a-child-docker-image) page.
 
-### <a id="rdplib_plotly"></a>Example with Refinitiv Data via Refinitiv Data Platform Library and Plotly
+### <a id="rdplib_plotly"></a>Example with LSEG data via Data Library beta and Plotly
 
-Let's demonstrate with the [Refinitiv Data Platform Library for Python](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) (RDP Library for Python) and Plotly libraries. 
+Let's demonstrate with the [Data Library beta](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) (RDP Libraries) and Plotly libraries. 
 
-### <a id="rdplib_intro"></a>Introduction to Refinitiv Data Platform (RDP) Libraries
+### <a id="rdplib_intro"></a>Introduction to Data Library beta
 
-Refinitiv provides a wide range of contents and data which require multiple technologies, delivery mechanisms, data formats, and multiple APIs to access each content. The [RDP Libraries](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) are a suite of ease-of-use interfaces providing unified access to streaming and non-streaming data services offered within the [Refinitiv Data Platform (RDP)](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis). The Libraries simplified how to access data to various delivery modes such as Request-Response, Streaming, Bulk File, and Queues via a single library. 
+LSEG provides a wide range of contents and data which require multiple technologies, delivery mechanisms, data formats, and multiple APIs to access each content. The [Data Library beta](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) (formerly known as RDP Libraries)are a suite of ease-of-use interfaces providing unified access to streaming and non-streaming data services offered within the [Data Platform](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis). The Libraries simplified how to access data to various delivery modes such as Request-Response, Streaming, Bulk File, and Queues via a single library. 
 
-For more deep detail regarding the RDP Libraries, please refer to the following articles and tutorials:
-- [Developer Article: Discover our Refinitiv Data Platform Library part 1](https://developers.refinitiv.com/article/discover-our-upcoming-refinitiv-data-platform-library-part-1).
-- [Developer Article: Discover our Refinitiv Data Platform Library part 2](https://developers.refinitiv.com/en/article-catalog/article/discover-our-refinitiv-data-platform-library-part-2).
-- [Refinitiv Data Platform Libraries Document: An Introduction page](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/documentation).
 
 #### Disclaimer
 
@@ -194,14 +201,14 @@ As this example project has been tested on alpha versions **1.0.0.a10** of the P
 
 Firstly create a ```requirements.txt``` file in a */python/* folder with the following content:
 
-```
+```ini
 plotly==5.2.2
 refinitiv-dataplatform==1.0.0a10
 ```
 
 Next, create a ```Dockerfile``` file in a */python/* folder with the following content:
 
-```
+```docker
 # Start from a core stack version
 FROM jupyter/scipy-notebook:70178b8e48d7
 
@@ -219,13 +226,13 @@ Please noticed that a Dockerfile set ```ENV JUPYTER_ENABLE_LAB=yes``` environmen
 
 And then build a Docker image name *jupyter_rdp_plotly* with the following command:
 
-```
+```bash
 docker build . -t jupyter_rdp_plotly
 ```
 
 Once the Docker image is built successfully, you can the following command to starts a container running a Jupyter Notebook server with all Python libraries that are defined in a ```requirements.txt``` file and *jupyter/scipy-notebook* in your machine.
 
-```
+```bash
 docker run -p 8888:8888 --name notebook -v <project /python/notebook/ directory>:/home/jovyan/work --env-file .env -it jupyter_rdp_plotly
 ```
 
@@ -233,7 +240,7 @@ docker run -p 8888:8888 --name notebook -v <project /python/notebook/ directory>
 
 Please noticed that all credentials have been passed to the Jupyter server's environment variables via Docker run ```-env-file .env``` option, so the notebook can access those configurations via ```os.getenv()``` method. Developers do not need to keep credentials information in the notebook source code.
 
-Then you can start to create notebook applications that consume content from Refinitiv with the RDP Library API, and then plot data with the Plotly library. Please see more detail in the *rdp_library_plotly_notebook.ipynb* example notebook file in */python/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to build and run the Jupyter Docker Scipy-Notebook customize's image with RDP Library for Python and Plotly](#scipy_notebook_build) section.
+Then you can start to create notebook applications that consume content from LSEG with the Data Library API, and then plot data with the Plotly library. Please see more detail in the *rdp_library_plotly_notebook.ipynb* example notebook file in */python/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to build and run the Jupyter Docker Scipy-Notebook customize's image with RDP Library for Python and Plotly](#scipy_notebook_build) section.
 
 ![Figure-8](images/08_rdplib_notebook_1.png "RDP Library for Python and Plotly notebook result 1") 
 
@@ -245,7 +252,7 @@ Then you can start to create notebook applications that consume content from Ref
 
 If you are using [R programming language](https://www.r-project.org/) in your Data Science or Finance/Statistic works, Jupyter Docker Stacks provide [jupyter/r-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-r-notebook) Docker image for you. You can pull a jupyter/r-notebook image starts a container running a Jupyter Notebook server with the [R kernel](https://irkernel.github.io/) via a single command.
 
-```
+```bash
 docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/r-notebook:70178b8e48d7
 ```
 The above command set the following container's options:
@@ -276,7 +283,7 @@ To stop the container, just press Ctrl+c keys to exit the container.
 
 Alternatively, you may just run ```docker stop <container name>``` to stop the container  and ```docker rm <container name>``` command remove the container.
 
-```
+```bash
 docker stop notebook
 ...
 docker rm notebook
@@ -285,26 +292,26 @@ The example notebook of this scenario is the *rdp_apis_r_esg_notebook.ipynb* exa
 
 ![Figure-11-b](images/11b_rdpapis_r_notebook.png "RDP APIs R notebook run result") 
 
-With the pre-installed R Data Science and development packages, developers are ready to build a notebook or dashboard with the RDP APIs (or other Refinitiv HTTP REST APIs) content. You can request data from Refinitiv with the HTTP library, perform data analysis and then plot a graph for data visualization.
+With the pre-installed R Data Science and development packages, developers are ready to build a notebook or dashboard with the RDP APIs (or other LSEG HTTP REST APIs) content. You can request data from LSEG with the HTTP library, perform data analysis and then plot a graph for data visualization.
 
 ## <a id="r_install_libs"></a>How to use other R Libraries
 
 If you are using the libraries that do not come with the jupyter/r-notebook Docker image such as the [Plotly R library ](https://plotly.com/r/), you can install them directly via the notebook shell with the following command.
 
-```
+```r
 install.packages("plotly")
 ```
 However, this solution installs the package into the currently-running Jupyter kernel which is always destroyed every time you stop a Docker container. 
 
 A better solution is to create a new Docker image from Jupyter Docker Stacks that contains the required libraries, and then all containers generated from the image can use the libraries without any manual installation. Like the other Jupyter Docker Stacks, developers can create their Dockerfile with an instruction to install R packages on top of the jupyter/r-notebook image.
 
-### <a id="r_rdpapi_plotly"></a>Example with Refinitiv Data APIs and Plotly on R-Notebook
+### <a id="r_rdpapi_plotly"></a>Example with RDP APIs and Plotly on R-Notebook
 
 Let's demonstrate by building a Docker image that included the Plotly library, and then run the R notebook application that retrieves historical data from APIs, and draws charts with the Plotly R library.
 
 Firstly, create a ```Dockerfile``` file in a */r/* folder with the following content:
 
-```
+```docker
 # Start from a core stack version
 FROM jupyter/r-notebook:70178b8e48d7
 
@@ -317,17 +324,18 @@ ENV JUPYTER_ENABLE_LAB=yes
 ```
 And then build a Docker image name *jupyter_rdp_r_plotly* with the following command:
 
-```
+```bash
 docker build . -t jupyter_rdp_r_plotly
 ```
 
 Once the Docker image is built successfully, you can the following command to starts a container running a Jupyter R Notebook server with the Plotly R library and  *jupyter/r-notebook* in your machine.
 
-```
+```bash
 docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work --env-file .env -it jupyter_rdp_r_plotly
 ```
-Then you can start to create notebook applications with R language to consume Refinitiv content via the RDP APIs HTTP REST, and then plot data with the Plotly library. Please see more detail in the *rdp_library_plotly_notebook.ipynb* example notebook file in */r/notebook/* folder. 
-this example notebook is based on the *RDPHistoricalRExample.ipynb* example of [Setup Jupyter Notebook for R](https://developers.refinitiv.com/en/article-catalog/article/setup-jupyter-notebook-r) ([GitHub](https://github.com/Refinitiv-API-Samples/Example.RefinitivAPIs.R.Jupyter)) with some modifications to match the Jupyter Docker scenario.
+
+Then you can start to create notebook applications with R language to consume LSEG content via the RDP APIs HTTP REST, and then plot data with the Plotly library. Please see more detail in the *rdp_library_plotly_notebook.ipynb* example notebook file in */r/notebook/* folder. 
+this example notebook is based on the *RDPHistoricalRExample.ipynb* example of [Setup Jupyter Notebook for R](https://developers.lseg.com/en/article-catalog/article/setup-jupyter-notebook-r) ([GitHub](https://https://github.com/LSEG-API-Samples.lseg.com/en/Example.RefinitivAPIs.R.Jupyter)) with some modifications to match the Jupyter Docker scenario.
 
 ![Figure-12](images/12_rdpapi_r_notebook_1.png "RDP APIs and Plotly r-notebook result 1") 
 
@@ -337,25 +345,29 @@ You can find a full detail regarding how to run this example notebook on the [Ho
 
 ## <a id="dapi_usercase"></a>What if I use Eikon Data API
 
-If you are using the [Eikon Data API](https://developers.refinitiv.com/en/api-catalog/eikon/eikon-data-api) (aka DAPI), the Jupyter Docker Stacks are not for you. The Refinitiv Workspace/Eikon application integrates a Data API proxy that acts as an interface between the Eikon Data API Python library and the Eikon Data Platform. For this reason, the Refinitiv Workspace/Eikon application must be running in the same machine that running the Eikon Data API, and the Refinitiv Workspace/Eikon application does not support Docker.
+If you are using the [Eikon Data API](https://developers.lseg.com/en/api-catalog/eikon/eikon-data-api) (aka DAPI), the Jupyter Docker Stacks are not for you. The Workspace application integrates a Data API proxy that acts as an interface between the Eikon Data API Python library and the Eikon Data Platform. For this reason, the Workspace application must be running in the same machine that running the Eikon Data API, and the Workspaceapplication does not support Docker.
 
-However, you can access the [*CodeBook*](https://www.refinitiv.com/en/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Refinitiv Workspace and Eikon as an app (**no installation required!!**), providing access to Refinitiv APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
+However, you can access the [*CodeBook*](https://www.refinitiv.com/en/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Workspace as an app (**no installation required!!**), providing access to LSEG APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
 
-Please see more detail regarding the CodeBook app in this [Use Eikon Data API or RDP Library in Python in CodeBook on Web Browser article](https://developers.refinitiv.com/en/article-catalog/article/use-eikon-data-api-or-rdp-library-python-codebook-web-browser).
+Please see more detail regarding the CodeBook app in this [Use Eikon Data API or RDP Library in Python in CodeBook on Web Browser article](https://developers.lseg.com/en/article-catalog/article/use-eikon-data-api-or-rdp-library-python-codebook-web-browser).
 
 ![Figure-14](images/14_codebook.png "Codebook Application") 
 
 ## <a id="prerequisite"></a>Demo prerequisite
+
 This example requires the following dependencies software and libraries.
+
 1. RDP Access credentials.
 2. [Docker Desktop/Engine](https://docs.docker.com/get-docker/) version 20.10.x
 3. [DockerHub](https://hub.docker.com/) account (free subscription).
 4. Internet connection. 
 
-Please contact your Refinitiv's representative to help you to access the RDP account and services. You can find more detail regarding the RDP access credentials set up from the *Getting Started for User ID* section of [Getting Start with Refinitiv Data Platform article](https://developers.refinitiv.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article:
+Please contact your LSEG's representative to help you to access the RDP account and services. You can find more detail regarding the RDP access credentials set up from the *Getting Started for User ID* section of [Getting Start with Data Platform article](https://developers.lseg.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article:
 
 ##  <a id="project_files"></a>Project files
+
 This example project contains the following files and folders
+
 1. *python/* folder: The Jupyter Notebook for RDP APIs/RDP Library for Python with jupyter scipy-notebook, contains example notebooks, configurations, and Docker files.
 2. *r/* folder: The Jupyter Notebook for RDP APIs/with jupyter r-notebook, contains example notebooks, and Docker files.
 3. *.env.example*: The example of ```.env``` file structure.
@@ -370,9 +382,11 @@ The first step is to unzip or download the example project folder into a directo
 **Caution**: You *should not* share a ```.env``` file to your peers or commit/push it to the version control. You should add the file to the ```.gitignore``` file to avoid adding it to version control or public repository accidentally.
 
 ### <a id="scipy_notebook_run"></a>How to run the Jupyter Docker Scipy-Notebook
+
 1. Firstly, open the project folder in the command prompt and go to the *python* subfolder
 2. Create a file name ```.env``` in that folder with the following content:
-    ```
+
+    ```ini
     # RDP Core Credentials
     RDP_USER=<Your RDP User>
     RDP_PASSWORD=<Your RDP Password>
@@ -384,9 +398,11 @@ The first step is to unzip or download the example project folder into a directo
     RDP_ESG_URL=/data/environmental-social-governance/v2/views/scores-full
     ```
 3. Run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt to pull Jupyter Docker Scipy-Notebook image and run its container
-    ```
+
+    ```bash
     docker run -p 8888:8888 --name notebook -v <project /python/notebook/ directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/scipy-notebook:70178b8e48d7
     ```
+
 4. The Jupyter Docker Scipy-Notebook will run the Jupyter server and print the server URL in a console. 
 5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
 6. Open the work folder and open *rdp_apis_notebook.ipynb* example notebook file, then run through each notebook cell.
@@ -394,22 +410,28 @@ The first step is to unzip or download the example project folder into a directo
     ![Figure-15](images/15_rdpapi_notebook_screen.png "rdp_apis_notebook.ipynb screen") 
 
 ### <a id="scipy_notebook_build"></a>How to build and run the Jupyter Docker Scipy-Notebook customized image with RDP Library for Python and Plotly
+
 1. Firstly, open the project folder in the command prompt and go to the *python* subfolder
 2. Create a file name ```.env``` in that folder with the following content. You can skip this step if you already did it in the Scipy-Notebook run section above.
-    ```
+
+    ```ini
     # RDP Core Credentials
     RDP_USER=<Your RDP User>
     RDP_PASSWORD=<Your RDP Password>
     RDP_APP_KEY=<Your RDP App Key>
     ```
 3. Run the following [Docker build](https://docs.docker.com/engine/reference/commandline/build/) command to build the Docker Image name *jupyter_rdp_plotly*:
-    ```
+
+    ```bash
     docker build . -t jupyter_rdp_plotly
     ```
+    
 4. Once Docker build the image success, run the following command to start a container
-    ```
+
+    ```bash
     docker run -p 8888:8888 --name notebook -v <project /python/notebook/ directory>:/home/jovyan/work --env-file .env -it jupyter_rdp_plotly
     ```
+
 5. The jupyter_rdp_plotly container will run the Jupyter server and print the server URL in a console. 
 6. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
 7. Open the work folder and open *rdp_library_plotly_notebook.ipynb* example notebook file, then run through each notebook cell.
@@ -417,9 +439,11 @@ The first step is to unzip or download the example project folder into a directo
     ![Figure-16](images/16_rdplib_notebook_screen.png "rdp_library_plotly_notebook.ipynb screen")
 
 ### <a id="r_notebook_run"></a>How to run the Jupyter Docker R-Notebook
+
 1. Firstly, open the project folder in the command prompt and go to the *r* subfolder
 2. Create a file name ```.env``` in that folder with the following content:
-    ```
+
+    ```ini
     # RDP Core Credentials
     RDP_USER=<Your RDP User>
     RDP_PASSWORD=<Your RDP Password>
@@ -431,9 +455,11 @@ The first step is to unzip or download the example project folder into a directo
     RDP_ESG_URL=/data/environmental-social-governance/v2/views/scores-full
     ```
 3. Run the following [Docker run](https://docs.docker.com/engine/reference/run/) command in a command prompt to pull Jupyter Docker R-Notebook image and run its container
-    ```
+
+    ```bash
     docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes --env-file .env -it jupyter/r-notebook:70178b8e48d7
     ```
+
 4. The Jupyter Docker R-Notebook will run the Jupyter server and print the server URL in a console. 
 5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
 6. Open the work folder and open *rdp_apis_r_esg_notebook.ipynb* example notebook file, then run through each notebook cell.
@@ -441,9 +467,11 @@ The first step is to unzip or download the example project folder into a directo
     ![Figure-16b](images/16b_rdpapi_notebook_r_screen.png "rdp_apis_r_esg_notebook.ipynb screen") 
 
 ### <a id="r_notebook_build"></a>How to build and run the Jupyter Docker R-Notebook customized image with Plotly
+
 1. Firstly, open the project folder in the command prompt and go to the *r* subfolder
 2. Create a file name ```.env``` in that folder with the following content.
-    ```
+
+    ```ini
     # RDP Core Credentials
     RDP_USER=<Your RDP User>
     RDP_PASSWORD=<Your RDP Password>
@@ -458,13 +486,17 @@ The first step is to unzip or download the example project folder into a directo
     RDP_HISTORICAL_EVENT_URL=/views/events/
     ```
 3. Run the following [Docker build](https://docs.docker.com/engine/reference/commandline/build/) command to build the Docker Image name *jupyter_rdp_r_plotly*:
-    ```
+
+    ```bash
     docker build . -t jupyter_rdp_r_plotly
     ```
+
 4. Once Docker build the image success, run the following command to start a container
-    ```
+
+    ```bash
     docker run -p 8888:8888 --name notebook -v <project /r/notebook/ directory>:/home/jovyan/work --env-file .env -it jupyter_rdp_r_plotly
     ```
+
 5. The jupyter_rdp_r_plotly container will run the Jupyter server and print the server URL in a console. 
 6. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
 7. Open the work folder and open *rdp_apis_r_plotly_notebook.ipynb* example notebook file, then run through each notebook cell.
@@ -480,21 +512,19 @@ The Jupyter Docker Stacks already contain a handful of libraries for Data Scienc
 
 ## <a id="references"></a>References
 
-You can find more details regarding the Refinitiv Data Platform Libraries, Plotly, Jupyter Docker Stacks, and related technologies for this notebook from the following resources:
-* [Refinitiv Data Platform (RDP) Libraries](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
-* [RDP Libraries Quick Start Guide page](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/quick-start).
-* [RDP Libraries Tutorial page](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries/tutorials).
-* [Discover our Refinitiv Data Platform Library (part 1)](https://developers.refinitiv.com/en/article-catalog/article/discover-our-refinitiv-data-platform-library-part-1).
-* [Discover our Refinitiv Data Platform Library (part 2)](https://developers.refinitiv.com/en/article-catalog/article/discover-our-refinitiv-data-platform-library-part-2).
-* [Plotly Official page](https://plotly.com/).
-* [Plotly Python page](https://plotly.com/python/).
-* [Plotly Express page](https://plotly.com/python/plotly-express/)
-* [Plotly Graph Objects page](https://plotly.com/python/graph-objects/)
-* [Jupyter Docker Stacks page](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
-* [Jupyter Docker Stack on DockerHub](https://hub.docker.com/u/jupyter) website.
-* [Setup Jupyter Notebook for R article](https://developers.refinitiv.com/en/article-catalog/article/setup-jupyter-notebook-r).
-* [An Introduction to Docker for R Users](https://colinfay.me/docker-r-reproducibility/).
+You can find more details regarding the Data Library beta, Plotly, Jupyter Docker Stacks, and related technologies for this notebook from the following resources:
 
-For any questions related to Refinitiv Data Platform or Refinitiv Data Platform Libraries, please use the following forums on the [the Developers Community Q&A page](https://community.developers.refinitiv.com/).
-- [RDP APIs Forum](https://community.developers.refinitiv.com/spaces/231/index.html).
-- [Refinitiv Data Platform Libraries Forum](https://community.developers.refinitiv.com/spaces/321/refinitiv-data-platform-libraries.html).
+- [LSEG Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) on the [LSEG Developer Community](https://developers.lseg.com/) website.
+- [Essential Guide to the Data Libraries - Generations of Python library (EDAPI, RDP, RD, LD)](https://developers.lseg.com/en/article-catalog/article/essential-guide-to-the-data-libraries) article.
+- [Data Library Beta](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) page.
+- [Plotly Official page](https://plotly.com/).
+- [Plotly Python page](https://plotly.com/python/).
+- [Plotly Express page](https://plotly.com/python/plotly-express/)
+- [Plotly Graph Objects page](https://plotly.com/python/graph-objects/)
+- [Jupyter Docker Stacks page](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html)
+- [Jupyter Docker Stack on DockerHub](https://hub.docker.com/u/jupyter) website.
+- [Setup Jupyter Notebook for R article](https://developers.lseg.com/en/article-catalog/article/setup-jupyter-notebook-r).
+- [An Introduction to Docker for R Users](https://colinfay.me/docker-r-reproducibility/).
+
+
+For any questions related to LSEG APIs, please use the following forums on the [the Developers Community Q&A page](https://community.developers.refinitiv.com/).
