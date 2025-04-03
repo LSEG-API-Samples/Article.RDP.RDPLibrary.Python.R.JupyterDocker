@@ -4,20 +4,6 @@
 - Environment: Windows
 - Prerequisite: [Access to RDP credentials](#prerequisite)
 
-## <a id="table"></a>Table of Contents
-* [Introduction](#intro_0)
-* [Introduction to Jupyter Docker Stacks](#intro)
-* [Running the Jupyter Docker Scipy-Notebook Image](#scipy_notebook)
-* [How to use other Python Libraries](#scipy_install_libs)
-* [Running the Jupyter Docker R-Notebook Image](#r_notebook_intro)
-* [How to use other R Libraries](#r_install_libs)
-* [What if I use Eikon Data API](#dapi_usercase)
-* [Demo prerequisite](#prerequisite)
-* [How to run the Examples](#how_to_run)
-* [Conclusion](#conclusion)
-* [References](#references)
-* [GitHub](#github)
-
 ## <a id="intro_0"></a>Introduction
 
 **Last Updated**: April 2025
