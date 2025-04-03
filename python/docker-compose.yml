@@ -1,0 +1,10 @@
+services:
+  jupyter:
+    build:
+      dockerfile: Dockerfile 
+    ports:
+      - 8888:8888
+    volumes: 
+      - C:\Projects\Code\notebook_docker\python\notebook:/home/jovyan/work
+    env_file:
+      - .env
