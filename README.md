@@ -39,11 +39,13 @@ The [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/late
 Docker also helps the team share the development environment by letting your peers replicate the same environment easily. You can share the notebooks, Dockerfile, dependencies-list files with your colleagues, then they just run one or two commands to run the same environment.
 
 Jupyter Docker Stacks provide various images for developers based on their requirement such as:
-- [jupyter/scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook): Jupyter Notebook/JupyterLab with [conda](https://github.com/conda/conda)/[mamba](https://github.com/mamba-org/mamba) , [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) and popular packages from the scientific Python ecosystem ([Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Requests](https://docs.python-requests.org/en/master/), etc.)
+
+- [jupyter/base-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook): The based Jupyter applications set (JupyterLab, Jupyter Notebook, JupyterHub, and NBClassic) with minimal functions. The basic HTTP REST API like [requests](https://requests.readthedocs.io/en/latest/) is included.
+- [jupyter/scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook): Jupyter applications with [conda](https://github.com/conda/conda)/[mamba](https://github.com/mamba-org/mamba) , [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) and popular packages from the scientific Python ecosystem ([Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Requests](https://docs.python-requests.org/en/master/), etc.)
 - [jupyter/r-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-r-notebook): Jupyter Notebook/JupyterLab wit R interpreter, IRKernel and [devtools](https://cran.r-project.org/web/packages/devtools/index.html).
 - [jupyter/datascience-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook): Everything in *jupyter/scipy-notebook* and *jupyter/r-notebook* images with Julia support.
 - [jupyter/tensorflow-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-tensorflow-notebook): Everything in *jupyter/scipy-notebook* image with [TensorFlow](https://www.tensorflow.org/).
-
+- and much more.
 Please see more detail about all image types on [Selecting an Image](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#selecting-an-image) page.
 
 ## <a id="scipy_notebook"></a>Running the Jupyter Docker Scipy-Notebook Image
@@ -53,7 +55,7 @@ You can run the following command to pull a jupyter/scipy-notebook image (I am d
 ```bash
 docker run -p 8888:8888 --name notebook -v <your working directory>:/home/jovyan/work -it jupyter/scipy-notebook:python-3.11.6
 ```
-The above command set the following container's options:
+The command above sets the following container's options:
 
 - ```-p 8888:8888```: Exposes the server on host port 8888
 - ```-v <your working directory>:/home/jovyan/work```: Mounts the working directory on the host as **/home/jovyan/work** folder in the container to save the files between your host machine and a container.
@@ -64,7 +66,7 @@ The above command set the following container's options:
 *Note*:
 
 - Docker destroys the container and its data when you remove the container, so you always need the [mount volume](https://docs.docker.com/reference/cli/docker/container/run/#volume) (```-v```) option.
-- The default notebook username of a container is always **jovyan** (but you can change it to something else).
+- The default notebook username of a container is always **jovyan** (but you can change it to something else -- see [Example 2](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/running.html#example-2)).
 
 However, run that long Docker command every time to start JupyterLab environment is not easy. I am using the [Docker Compose](https://docs.docker.com/compose/) to simplify our Docker container process.
 
@@ -100,7 +102,7 @@ The jupyter/scipy-notebook image has built-in useful Python libraries such as [r
 
 The files in ```<your working directory>``` folder will be available in the JupyterLab application the next time you start a container, so you can work with your files as a normal JupyterLab/Anaconda environment.
 
-To stop the container, just press ```docker compose down``` command to stop and delete the container.
+To stop the container, just run a ```docker compose down``` command to stop and delete the container.
 
 ### <a id="rdpapis_esg"></a>Requesting ESG Data from LSEG Delivery Platform
 
@@ -172,10 +174,6 @@ Please see the full detail regarding how to run this example notebook on the [Ho
 
 ## <a id="scipy_install_libs"></a>How to use other Python Libraries
 
-**Last Updated**: April 2025
-
-**Update April 2025**: This article are outdated. There is a new and improve [LSEG Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) (aka Data Library version 2) available now. Please see the [Essential Guide to the Data Libraries - Generations of Python library (EDAPI, RDP, RD, LD)](https://developers.lseg.com/en/article-catalog/article/essential-guide-to-the-data-libraries) article for more detail.
-
 If you are using the libraries that do not come with the jupyter/scipy-notebook Docker image such as the [Plotly Python library ](https://plotly.com/python/), you can install them directly via the notebook shell with both pip and conda/mamba tools.
 
 Example with pip:
@@ -200,7 +198,7 @@ The Jupyter Docker Stacks let developers create their Dockerfile with an instruc
 
 Let's demonstrate with the [LSEG Data Library beta](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) (Data Library version 2) and Plotly libraries. 
 
-### <a id="rdp_lib"></a>Introduction to the Data Library for Python
+### <a id="ld_lib"></a>Introduction to the Data Library for Python
 
 My next point is what is the Data Library. The [Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) provides a set of ease-of-use interfaces offering coders uniform access to the breadth and depth of financial data and services available on the Workspace, RDP, and Real-Time Platforms. The API is designed to provide consistent access through multiple access channels and target both Professional Developers and Financial Coders. Developers can choose to access content from the desktop, through their deployed streaming services, or directly to the cloud. With the Data Library, the same Python code can be used to retrieve data regardless of which access point you choose to connect to the platform.
 
@@ -233,7 +231,7 @@ lseg-data==2.0.1
 anywidget==0.9.18
 ```
 
-Please be noticed that you do not need to specify ```jupyterlab``` dependencies.
+Please be noticed that you do not need to specify ```jupyterlab``` dependencies in a file.
 
 Next, create a ```Dockerfile``` file in a */python/* folder with the following content:
 
@@ -273,12 +271,11 @@ docker compose up
 
 Once the Docker image is built successfully, you can the following command to starts a container running a Jupyter Notebook server with all Python libraries that are defined in a ```requirements.txt``` file and *jupyter/scipy-notebook* in your machine.
 
-
 ![Figure-7](images/07_notebook_rdp_plotly.png "RDP Library for Python and Plotly are ready") 
 
 Please noticed that all credentials have been passed to the Jupyter server's environment variables via Docker run ```-env-file .env``` option, so the notebook can access those configurations via ```os.getenv()``` method. Developers do not need to keep credentials information in the notebook source code.
 
-Then you can start to create notebook applications that consume content from LSEG with the Data Library API, and then plot data with the Plotly library. Please see more detail in the *ld_notebook.ipynb* example notebook file in */python/notebook/* folder. Please see the full detail regarding how to run this example notebook on the [How to build and run the Jupyter Docker Scipy-Notebook customize's image with RDP Library for Python and Plotly](#scipy_notebook_build) section.
+Then you can start to create notebook applications that consume content from LSEG with the Data Library API, and then plot data with the Plotly library. Please see more detail in the *ld_notebook.ipynb* example notebook file in */python/notebook/* folder.
 
 ![Figure-8](images/08_ldlib_notebook_1.png "RDP Library for Python and Plotly notebook result 1") 
 
@@ -294,7 +291,7 @@ If you are using the Data library with a Desktop Session, the Jupyter Docker Sta
 However, you can access the [*CodeBook*](https://www.refinitiv.com/en/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Workspace as an app (**no installation required!!**), providing access to LSEG APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
 
 
-![Figure-14](images/14_codebook.png "Codebook Application") 
+![Figure-10](images/14_codebook.png "Codebook Application") 
 
 ## <a id="prerequisite"></a>Demo prerequisite
 
@@ -364,11 +361,10 @@ The Jupyter Docker Stacks already contain a handful of libraries for Data Scienc
 
 ## <a id="references"></a>References
 
-You can find more details regarding the Data Library beta, Plotly, Jupyter Docker Stacks, and related technologies for this notebook from the following resources:
+You can find more details regarding the Data Library, Plotly, Jupyter Docker Stacks, and related technologies for this notebook from the following resources:
 
 - [LSEG Data Library for Python](https://developers.lseg.com/en/api-catalog/lseg-data-platform/lseg-data-library-for-python) on the [LSEG Developer Community](https://developers.lseg.com/) website.
 - [Essential Guide to the Data Libraries - Generations of Python library (EDAPI, RDP, RD, LD)](https://developers.lseg.com/en/article-catalog/article/essential-guide-to-the-data-libraries) article.
-- [Data Library Beta](https://developers.lseg.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-libraries) page.
 - [Plotly Official page](https://plotly.com/).
 - [Plotly Python page](https://plotly.com/python/).
 - [Plotly Express page](https://plotly.com/python/plotly-express/)
