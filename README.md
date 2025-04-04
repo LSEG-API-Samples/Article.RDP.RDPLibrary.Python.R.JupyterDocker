@@ -277,9 +277,19 @@ Please noticed that all credentials have been passed to the Jupyter server's env
 
 Then you can start to create notebook applications that consume content from LSEG with the Data Library API, and then plot data with the Plotly library. Please see more detail in the *ld_notebook.ipynb* example notebook file in */python/notebook/* folder.
 
-![Figure-8](images/08_ldlib_notebook_1.png "RDP Library for Python and Plotly notebook result 1") 
+You can perform data-sci tasks with Data Library and Plotly such as:
 
-![Figure-9](images/09_ldlib_notebook_1.png "RDP Library for Python and Plotly notebook result 2") 
+Login and Open session to RDP:
+
+![Figure-8](images/08_ldlib_notebook_1.png "Data library login to RDP") 
+
+Request Historical data from RDP
+
+![Figure-9](images/08_ldlib_notebook_2.png "Data library request historical data") 
+
+And plot a graph with Plotly.
+
+![Figure-10](images/09_ldlib_notebook_1.png "plot dataframe to graph with Plotly") 
 
 **Caution**: You *should add* ```.env``` (and ```.env.example```), Jupyter checkpoints, cache, config, etc. file to the ```.dockerignore``` file to avoid adding them to a public Docker Hub repository.
 
@@ -291,7 +301,7 @@ If you are using the Data library with a Desktop Session, the Jupyter Docker Sta
 However, you can access the [*CodeBook*](https://www.refinitiv.com/en/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Workspace as an app (**no installation required!!**), providing access to LSEG APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
 
 
-![Figure-10](images/14_codebook.png "Codebook Application") 
+![Figure-11](images/14_codebook.png "Codebook Application") 
 
 ## <a id="prerequisite"></a>Demo prerequisite
 
@@ -346,18 +356,19 @@ The first step is to unzip or download the example project folder into a directo
 5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
 6. Open the work folder and open *rdp_apis_notebook.ipynb* example notebook file, then run through each notebook cell.
 
-    ![Figure-15](images/15_rdpapi_notebook_screen.png "rdp_apis_notebook.ipynb screen") 
+    ![Figure-12](images/15_rdpapi_notebook_screen.png "rdp_apis_notebook.ipynb screen") 
 
 7. Open the work folder and open *ld_notebook.ipynb* example notebook file, then run through each notebook cell.
 
-    ![Figure-16](images/16_ldlib_notebook_screen.png "ld_notebook.ipynb screen")
+    ![Figure-13](images/16_ldlib_notebook_screen.png "ld_notebook.ipynb screen")
 
 ## <a id="conclusion"></a>Conclusion
 
-Docker is an open containerization platform for developing, testing, deploying, and running any software application. The Jupyter Docker Stacks provide a ready-to-use and consistent development environment for Data Scientists, Financial coders, and their teams. Developers do not need to set up their environment/workbench (Anaconda, Virtual Environment, Jupyter installation, etc.) manually which is the most complex task for them anymore. Developers can just run a single command to start the Jupyter notebook server from Jupyter Docker Stacks and continue their work.
+[Docker](https://www.docker.com/) is an open containerization platform for developing, testing, deploying, and running any software application. The Jupyter Docker Stacks provide a ready-to-use and consistent development environment for Data Scientists, Financial coders, and their teams. Developers do not need to set up their environment/workbench (Anaconda, Virtual Environment, Jupyter installation, etc.) manually which is the most complex task for them anymore. Developers can just run a single command to start the Jupyter notebook server from Jupyter Docker Stacks and continue their work.
 
-The Jupyter Docker Stacks already contain a handful of libraries for Data Science/Financial development for various requirements (Python, R, Machine Learning, and much more). If developers need additional libraries, Jupyter Docker Stacks let developers create their Dockerfile with an instruction to install those dependencies. All containers generated from the customized image can use the libraries without any manual installation. 
+The [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/) contain a handful of libraries for Data Science/Financial development for various requirements (Python, R, Machine Learning, and much more). If developers need additional libraries, Jupyter Docker Stacks let developers create their Dockerfile with an instruction to install those dependencies. All containers generated from the customized image can use the libraries without any manual installation. 
 
+![Figure-14](images/0_jupyter_love_docker.png "Jupyter love Docker")
 
 ## <a id="references"></a>References
 
