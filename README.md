@@ -298,7 +298,7 @@ And plot a graph with Plotly.
 
 If you are using the Data library with a Desktop Session, the Jupyter Docker Stacks are not for you. The Workspace application integrates a Data API proxy that acts as an interface between the library and the Workspace Platform. For this reason, the Workspace application must be running in the same machine that running Data Library application, and the Workspace desktop application does not support Docker.
 
-However, you can access the [*CodeBook*](https://www.refinitiv.com/en/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Workspace as an app (**no installation required!!**), providing access to LSEG APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
+However, you can access the [*CodeBook*](https://www.lseg.com/en/data-analytics/products/codebook), the cloud-hosted Jupyter Notebook development environment for Python scripting from the application. The CodeBook is natively available in Workspace as an app (**no installation required!!**), providing access to LSEG APIs and other popular Python libraries that are already pre-installed on the cloud. The list of pre-installed libraries is available in the Codebook's *Libraries&Extensions.md* file.
 
 
 ![Figure-11](images/14_codebook.png "Codebook Application") 
